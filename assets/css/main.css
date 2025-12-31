@@ -19,6 +19,15 @@
   --nav-font: "Inter", sans-serif;
 }
 
+/* Menargetkan semua elemen yang memiliki atribut lang="ar" */
+[lang="ar"],
+.arabic-text {
+  font-family: "Amiri"; /* Gunakan font Arab yang sudah di-import */
+  direction: rtl; /* Memastikan teks berjalan dari kanan ke kiri */
+  /* font-size: em; Biasanya huruf Arab perlu lebih besar agar terbaca jelas */
+  line-height: 1.8; /* Memberi ruang agar harakat tidak bertumpuk */
+}
+
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
