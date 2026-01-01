@@ -2373,7 +2373,7 @@ section,
 .arabic-text {
   font-size: 25px; /* Ukuran diperbesar agar harakat jelas */
   line-height: 2.2; /* Jarak antar baris dilonggarkan */
-  font-weight: 700; /* Sedikit tebal agar kontras */
+  font-weight: 200; /* Sedikit tebal agar kontras */
   color: #000; /* Warna hitam pekat */
   letter-spacing: 0.5px;
 }
@@ -2424,5 +2424,5 @@ section,
 .tajwid-card .bg-light {
   background-color: #f1f5f9 !important;
   border: 1px dashed var(--accent-color);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
