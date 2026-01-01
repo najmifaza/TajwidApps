@@ -2364,3 +2364,65 @@ section,
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* --------------------------------------------------------------
+# Kustomisasi Materi Tajwid
+-------------------------------------------------------------- */
+
+/* 1. Pengaturan Teks Arab agar Jelas */
+.arabic-text {
+  font-size: 25px; /* Ukuran diperbesar agar harakat jelas */
+  line-height: 2.2; /* Jarak antar baris dilonggarkan */
+  font-weight: 700; /* Sedikit tebal agar kontras */
+  color: #000; /* Warna hitam pekat */
+  letter-spacing: 0.5px;
+}
+
+/* 2. Membuat Kotak (Card) untuk Setiap Hukum Tajwid */
+.tajwid-card {
+  background: #ffffff;
+  border-radius: 16px; /* Sudut membulat */
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Bayangan halus agar timbul */
+  border: 1px solid #edf2f7;
+  transition: transform 0.3s ease;
+}
+
+.tajwid-card:hover {
+  transform: translateY(-5px); /* Efek naik sedikit saat di-hover */
+}
+
+/* 3. Mempercantik Judul (Misal: 1. Idzhar) */
+.tajwid-card h4 {
+  color: var(--accent-color); /* Menggunakan warna hijau tema */
+  font-weight: 800;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+/* 4. Mempercantik List Contoh */
+.tajwid-card ul {
+  list-style: none; /* Hilangkan bullet point default */
+  padding: 0;
+}
+
+.tajwid-card ul li {
+  background-color: #f8fbf9; /* Latar belakang hijau sangat muda */
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border-right: 5px solid var(--accent-color); /* Aksen garis di kanan */
+  text-align: right; /* Teks Arab rata kanan */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 5. Khusus Contoh yang ada di dalam paragraf box */
+.tajwid-card .bg-light {
+  background-color: #f1f5f9 !important;
+  border: 1px dashed var(--accent-color);
+  font-size: 1.3rem;
+}
