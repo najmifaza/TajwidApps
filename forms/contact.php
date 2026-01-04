@@ -1,41 +1,53 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'contact@example.com';
+// Sesuaikan path ini dengan lokasi folder PHPMailer Anda
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+// Cek apakah form disubmit
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+    $mail = new PHPMailer(true);
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+    try {
+        // --- KONFIGURASI SERVER (Wajib Diisi) ---
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com'; 
+        $mail->SMTPAuth   = true;                                   
+        $mail->Username   = 'najmifaya@gmail.com'; // Email Gmail Anda
+        $mail->Password   = 'vmfb kfne ymhg flmu';   // Masukkan APP PASSWORD 16 digit (Bukan password login!)
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            
+        $mail->Port       = 587;                                    
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
+        // --- PENGIRIM & PENERIMA ---
+        // Pengirim (Bisa diset email sendiri agar tidak masuk spam)
+        $mail->setFrom('najmifaya@gmail.com', 'Website Contact Form');
+        
+        // Penerima (Email Anda tempat pesan akan masuk)
+        $mail->addAddress('najmifaya@gmail.com'); 
+        
+        // Reply-To (Agar kalau Anda klik reply, langsung ke email pengisi form)
+        $mail->addReplyTo($_POST['email'], $_POST['name']);
 
-  echo $contact->send();
+        // --- KONTEN EMAIL ---
+        $mail->isHTML(true);                                  
+        $mail->Subject = $_POST['subject'];
+        $mail->Body    = "
+            <h3>Pesan Baru dari Website</h3>
+            <p><strong>Nama:</strong> {$_POST['name']}</p>
+            <p><strong>Email:</strong> {$_POST['email']}</p>
+            <p><strong>Pesan:</strong><br>{$_POST['message']}</p>
+        ";
+
+        $mail->send();
+        echo 'OK'; // Respon 'OK' biasanya ditangkap oleh Javascript template BootstrapMade untuk menampilkan pesan "Sent"
+    } catch (Exception $e) {
+        echo "Pesan gagal terkirim. Error: {$mail->ErrorInfo}";
+    }
+} else {
+    echo "Akses dilarang.";
+}
 ?>
