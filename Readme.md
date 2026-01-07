@@ -11,15 +11,17 @@ Aplikasi ini dibangun sebagai *Static Web Application* yang modern, responsif, d
 ### 1. Pembelajaran Terstruktur & Lengkap
 Menyediakan kurikulum yang disusun sistematis mulai dari dasar hingga tingkat mahir. Materi dibagi menjadi 16 bab utama yang mencakup seluruh aspek penting ilmu Tajwid.
 
-### 2. Antarmuka Modern & Responsif
-* **Desain Adaptif**: Dibangun menggunakan **Bootstrap v5.3.3**, memastikan tampilan situs menyesuaikan otomatis di berbagai ukuran layar (HP, Tablet, Desktop).
-* **Navigasi Ramah Seluler**: Menu navigasi yang mudah diakses dengan dukungan *off-canvas* atau *dropdown* untuk perangkat seluler.
+### 2. Formulir Kontak Serverless (Web3Forms)
+Menggunakan integrasi **Web3Forms** untuk menangani pengiriman pesan dari pengguna langsung ke email tanpa membutuhkan backend PHP, menjaga aplikasi tetap ringan dan statis.
 
-### 3. Interaktivitas Pengguna
+### 3. Antarmuka Modern & Responsif
+* **Desain Adaptif**: Dibangun menggunakan **Bootstrap v5.3.3**, memastikan tampilan situs menyesuaikan otomatis di berbagai ukuran layar (HP, Tablet, Desktop).
+* **Navigasi Ramah Seluler**: Menu navigasi yang mudah diakses dengan dukungan *off-canvas* untuk perangkat seluler.
+
+### 4. Interaktivitas Pengguna
 * **Animasi Halus**: Menggunakan **AOS (Animate On Scroll)** untuk memberikan efek visual menarik saat pengguna menggulir halaman.
 * **Galeri Media**: Integrasi **GLightbox** untuk menampilkan video pembelajaran atau gambar ilustrasi tanpa meninggalkan halaman utama.
-* **Testimonial Slider**: Fitur slider interaktif menggunakan **Swiper** untuk menampilkan ulasan pengguna.
-* **Statistik Real-time**: Penghitung animasi (**PureCounter**) untuk menampilkan data statistik pengguna atau materi.
+* **Statistik & Slider**: Menampilkan data statistik dengan **PureCounter** dan ulasan pengguna menggunakan **Swiper**.
 
 ---
 
@@ -48,23 +50,18 @@ Aplikasi ini mencakup 16 topik pembahasan Tajwid yang tersedia dalam halaman ter
 
 ## 🛠️ Teknologi yang Digunakan
 
-Proyek ini dikembangkan menggunakan tumpukan teknologi berikut:
-
 * **Frontend**: HTML5, CSS3, JavaScript (Vanilla).
 * **Framework CSS**: Bootstrap v5.3.3.
-* **Ikon**: Bootstrap Icons.
-* **Library Eksternal** (Vendor):
+* **Form Handling**: [Web3Forms](https://web3forms.com/).
+* **Library Eksternal**:
     * `AOS` - Animasi scrolling.
     * `GLightbox` - Lightbox media galeri.
     * `Swiper` - Slider sentuh responsif.
     * `PureCounter` - Animasi angka statistik.
-* **Backend (Opsional)**: PHP (untuk pemrosesan formulir kontak di folder `forms/`).
 
 ---
 
 ## 📂 Struktur Proyek
-
-Berikut adalah gambaran struktur folder utama dalam repositori:
 
 ```text
 TajwidApps/
@@ -73,8 +70,6 @@ TajwidApps/
 │   ├── img/           # Aset gambar (logo, ilustrasi, avatar)
 │   ├── js/            # Logika JavaScript utama (main.js)
 │   └── vendor/        # Pustaka pihak ketiga (Bootstrap, AOS, dll)
-├── forms/             # Skrip PHP untuk formulir kontak
 ├── index.html         # Halaman Beranda (Landing Page)
 ├── materi-tajwid.html # Halaman Indeks Materi
-├── service-details.html # Template detail layanan
 └── [File Materi]      # File HTML materi individu (1Hukum... s/d 16Hukum...)
